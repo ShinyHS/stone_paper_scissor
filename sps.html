@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        #head{
+            font-size: 24px;
+        }
+        .imgcon{
+            justify-content: space-evenly;
+            border: 0.2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            
+        }
+        img{
+            cursor: pointer;
+            width: 200px;
+            height: 200px;
+        }
+        .text{
+            font-size: 28px;
+            font-weight: bolder;
+        }
+        .textm{
+            display: flex;
+            justify-content: space-evenly;
+            text-transform: uppercase;
+        }
+        .t-1{
+            color: red;
+        }
+        .t-2{
+            color:orange;
+        }
+        .t-3{
+            color:green;
+        }
+        .name,.name1{
+            color: blue;
+            padding: 10px;
+            font-weight: bold;
+         font-size: 26px;    
+        }
+        .name1{
+            color: darkviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-dark text-center p-4 text-white bold rounded my-1"><span id="head">Stone paper Sessior game</span></div>
+
+        <div class="imgcon mt-2 d-flex">
+            <img src="/img/sps1.png" alt="" srcset="" class="img-fluid img-thumbnail i-2" onclick="stone()">
+            <img src="/img/sps2.png" alt="" srcset="" class="img-fluid img-thumbnail i-2" onclick="paper()" >
+            <img src="/img/sps3.png" alt="" srcset="" class="img-fluid img-thumbnail i-3" onclick="Scissors()">
+        </div>
+        <div class="mt-2 textm">
+            <span class="text t-1 mr-5">Stone</span><span class="text t-2">paper</span><span class="text t-3 ml-5">Scissors</span>
+        </div>
+        <!-- ---------- -->
+        <div class="tex mt-4 text-center ">
+            <span class="name"></span>
+        </div>
+        <div class="tex mt-4 text-center ">
+            <span class="name1"></span>
+        </div>
+    </div>
+    <script>
+        let n1=document.querySelector('.name');
+        let img=document.querySelectorAll("img");
+        let n2=document.querySelector(".name1");
+        let text=document.querySelectorAll(".text");
+        let sps=["Stone","Paper","Scissors"];
+        function stone(){
+            n1.innerHTML="Your Selection is Stone";
+            img[1].hidden=true;
+            img[2].hidden=true;
+            text[1].hidden=true;
+            text[2].hidden=true;
+            setTimeout(() => {
+                let res=sps[Math.floor(Math.random()*3)];
+                n2.innerHTML="Computer Selection is "+res;
+                setTimeout(() => {
+                    if(res=="Stone")
+                    alert("This match is die");
+                    if(res=="Scissors")
+                    alert("You is Win");
+                    if(res=="Paper")
+                    alert("Computer is Win");
+                    location.reload();
+                }, 200);
+            },500);
+
+        }
+        function paper(){
+            n1.innerHTML="Your Selection is Paper";
+
+            img[0].hidden=true;
+            img[2].hidden=true;
+            text[0].hidden=true;
+            text[2].hidden=true;
+            setTimeout(() => {
+                let res=sps[Math.floor(Math.random()*3)];
+                n2.innerHTML="Computer Selection is "+res;
+                setTimeout(() => {
+                    if(res=="Paper")
+                    alert("This match is die");
+                    if(res=="Scissors")
+                    alert("Computer is Win");
+                    if(res=="Stone")
+                    alert("You Win");
+                    location.reload();
+                }, 200);
+            },500);
+        }
+        function Scissors(){
+            n1.innerHTML="Your Selection is Scissors";
+
+            img[0].hidden=true;
+            img[1].hidden=true;
+            text[0].hidden=true;
+            text[1].hidden=true;
+            setTimeout(() => {
+                let res=sps[Math.floor(Math.random()*3)];
+                n2.innerHTML="Computer Selection is "+res;
+                setTimeout(() => {
+                    if(res=="Scissors")
+                    alert("This match is die");
+                    if(res=="Paper")
+                    alert("You is Win");
+                    if(res=="Stone")
+                    alert("Computer Win");
+                    location.reload();
+                }, 200);
+            },500);
+        }
+    </script>
+    <!-- <script src="/js/proppermin.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script> -->
+</body>
+</html>
